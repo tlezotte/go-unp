@@ -9,30 +9,44 @@ import (
 )
 
 func main() {
-	args := os.Args[1:]
-	for _, compFile := range args {
-		theFile := utils.GetExtension(compFile)
-		switch theFile {
-		case ".zip", ".egg", ".whl", ".jar":
-			compression.RunUnzip(compFile)
-		case ".gz":
-			fmt.Println("gz")
-		case ".tar":
-			fmt.Println("tar")
+	var (
+		args         = os.Args[1:]
+		maxCharCount = 0
+		finalList    = []string{}
+		zipExt       = []string{".zip", ".jar", ".egg", ".whl"}
+		gzExt        = []string{".gz", ".tgz"}
+		tarExt       = []string{".tar"}
+	)
+	extList := append(zipExt, gzExt...)
+	extList = append(extList, tarExt...)
+
+	// Make slice of compressed files
+	for _, filename := range args {
+		theFile := utils.GetExtension(filename)
+
+		if utils.Contains(extList, theFile) {
+			fileLen := len(filename)
+			if fileLen > maxCharCount {
+				maxCharCount = fileLen
+			}
+			finalList = append(finalList, filename)
+		}
+	}
+
+	// Uncompress files
+	finalListLen := len(finalList)
+	for i, filename := range finalList {
+		spinner := fmt.Sprintf("[%d/%d]", i+1, finalListLen)
+		fmt.Printf("%s ", utils.Fade(spinner))
+		fileExt := utils.GetExtension(filename)
+
+		switch {
+		case utils.Contains(zipExt, fileExt):
+			compression.RunUnzip(filename, maxCharCount)
+		case utils.Contains(gzExt, fileExt):
+			compression.RunGunzip(filename, maxCharCount)
+		case utils.Contains(tarExt, fileExt):
+			compression.RunUntar(filename, maxCharCount)
 		}
 	}
 }
-
-
-//func gunzip() {
-//
-//func main() {
-//	// uncompress data
-//	uncompressedData, uncompressedDataErr := gUnzipData(compressedData)
-//	if uncompressedDataErr != nil {
-//		log.Fatal(uncompressedDataErr)
-//	}
-//
-//	fmt.Println("uncompressed data:", uncompressedData)
-//	fmt.Println("uncompressed data len:", len(uncompressedData))
-//}

@@ -4,3 +4,5 @@ dist/
 **/*.zip
 **/*.gz
 **/*.tar.gz
+**/*.tgz
+**/*.jar

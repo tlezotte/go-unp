@@ -1,11 +1,15 @@
 # unp
 
+Uncompress multiple files and types with one command.
+
+- Zip Archives (*.zip; *.egg; *.whl; *.jar)
+
 ## Coming Soon
 
 - Gzip Compressed Files (*.gz)
 - Gzip Compressed Tarballs (*.tar.gz; *.tgz)
 - Uncompressed Tarballs (*.tar)
-- Zip Archives (*.zip; *.egg; *.whl; *.jar)
+- Uncompressed ISO (*.iso
 
 ## Future Plans
 
