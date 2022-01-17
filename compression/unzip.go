@@ -82,9 +82,9 @@ func unzipFile(f *zip.File, destination string) error {
 }
 
 func RunUnzip(compFile string, padding int) {
-	output := utils.GetFilename(compFile)
+	destination := utils.GetFilename(compFile)
 	fmt.Printf("Extracting: %*s", padding, compFile)
-	err := UnzipSource(compFile, output)
+	err := UnzipSource(compFile, destination)
 	if err != nil {
 		//log.Fatal(err)
 		//fmt.Printf("  %s %s\n", color.RedString("⚠"), err)
@@ -93,7 +93,3 @@ func RunUnzip(compFile string, padding int) {
 		fmt.Printf("  %s\n", utils.Info("✓"))
 	}
 }
-
-//func ListUnzip(compFile string) {
-//	fmt.Printf("%s\n", compFile)
-//}

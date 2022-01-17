@@ -30,14 +30,23 @@ func gUnzipData(data []byte) (resData []byte, err error) {
 }
 
 func RunGunzip(compFile string, padding int) {
-	//output := utils.GetFilename(compFile)
+	//destination := utils.GetFilename(compFile)
 	fmt.Printf("Extracting: %*s", padding, compFile)
+
+	//if _, err := os.Stat(destination); os.IsNotExist(err) {
+	//	_ = os.Mkdir(destination, 0755)
+	//	if err != nil {
+	//		fmt.Printf("Creating directory failed: %q\n", err)
+	//	}
+	//}
+
+
 	//err := UnzipSource(compFile, output)
 	//if err != nil {
 	//	//log.Fatal(err)
 	//	//fmt.Printf("  %s %s\n", color.RedString("⚠"), err)
-  //      fmt.Printf("  %s\n", utils.Danger("⚠"))
+	//      fmt.Printf("  %s\n", utils.Danger("⚠"))
 	//} else {
-        fmt.Printf("  %s\n", utils.Info("✓"))
-  //  }
+	fmt.Printf("  %s\n", utils.Info("✓"))
+	//  }
 }

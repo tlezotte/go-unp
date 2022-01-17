@@ -9,12 +9,12 @@ import (
 )
 
 var (
-	Fade   = color.FgGray.Render
-	Red    = color.FgRed.Render
-	Danger = color.Danger.Render
-	Info   = color.Info.Render
-	Error  = color.New(color.FgRed, color.OpBold)
-	Green  = color.FgGreen.Render
+	Fade       = color.FgGray.Render
+	Red        = color.FgRed.Render
+	Danger     = color.Danger.Render
+	Info       = color.Info.Render
+	Error      = color.New(color.FgRed, color.OpBold)
+	Green      = color.FgGreen.Render
 )
 
 func GetFilename(fullpath string) string {
